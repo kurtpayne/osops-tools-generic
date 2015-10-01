@@ -43,7 +43,6 @@ def main():
             print(("Deleting floatingip %s - %s") %
                   (floatingip['id'], floatingip['floating_ip_address']))
             if not dry_run:
-                print("  -> Deleting for realsies")
-                #neutron.delete_floatingip(floatingip['id'])
+                neutron.delete_floatingip(floatingip['id'])
 
 main()
