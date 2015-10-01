@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
 This script deletes all the floatingips a user has that are not
 associated with a tenant.
