@@ -10,6 +10,9 @@ from neutronclient.v2_0 import client
 
 
 def main():
+
+    dry_run = (len(sys.argv) > 1 and sys.argv[1] == '--dry-run')
+
     try:
         username = os.environ['OS_USERNAME']
         tenant_name = os.environ['OS_TENANT_NAME']
@@ -29,6 +32,7 @@ def main():
         if not floatingip['port_id']:
             print(("Deleting floatingip %s - %s") %
                   (floatingip['id'], floatingip['floating_ip_address']))
-            neutron.delete_floatingip(floatingip['id'])
+            if not dry_run:
+                neutron.delete_floatingip(floatingip['id'])
 
 main()
